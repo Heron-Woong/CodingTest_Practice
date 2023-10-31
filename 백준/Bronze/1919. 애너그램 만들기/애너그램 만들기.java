@@ -6,18 +6,26 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String str1 = sc.next();
         String str2 = sc.next();
-        int count = 0;
-        boolean checked[] = new boolean[str2.length()];
-        for(int i = 0; i < str1.length(); ++i){
-            for(int j = 0; j < str2.length(); ++j){
-                if(checked[j] == true) continue;
-                if(str1.charAt(i) == str2.charAt(j)) {
-                    ++count;
-                    checked[j] = true;
-                    break;
-                }
+        
+        int countA[] = new int[26];
+        int countB[] = new int[26];
+        for (int i = 0; i < str1.length(); i++) {
+            countA[str1.charAt(i) - 'a']++;
+        }
+
+        for (int i = 0; i < str2.length(); i++) {
+            countB[str2.charAt(i) - 'a']++;
+        }
+
+        int ans = 0;
+        for (int i = 0; i < 26; ++i) {
+            if (countA[i] > countB[i]) {
+                ans += countA[i] - countB[i];
+            } else {
+                ans += countB[i] - countA[i];
             }
         }
-        System.out.println(str1.length()-count + str2.length()-count);
+        
+        System.out.println(ans);
     }
 }
