@@ -6,7 +6,7 @@ using namespace std;
 
 vector<int> solution(vector<string> id_list, vector<string> report, int k) {
     vector<int> answer;
-    vector<int>* check1 = new vector<int>[id_list.size()]; //½Å°íÇÑÀÚ¸¦ °¡Áö°í ÀÖ±â À§ÇØ ±¸Çö
+    vector<int>* check1 = new vector<int>[id_list.size()]; //ì‹ ê³ í•œìë¥¼ ê°€ì§€ê³  ìˆê¸° ìœ„í•´ êµ¬í˜„
 
     for (int i = 0; i < id_list.size(); ++i) {
         answer.push_back(0);
@@ -17,17 +17,17 @@ vector<int> solution(vector<string> id_list, vector<string> report, int k) {
         int idx1 = 0; int idx2 = 0;
         for (int j = 0; j < id_list.size(); ++j) {
             if (a == id_list[j]) {
-                idx1 = j; //½Å°íÇÑÀÚ index
+                idx1 = j; //ì‹ ê³ í•œì index
             }
         }
         for (int j = 0; j < id_list.size(); ++j) {
             if (b == id_list[j]) {
-                idx2 = j; //½Å°í¹ŞÀºÀÚ index
+                idx2 = j; //ì‹ ê³ ë°›ì€ì index
             }
         }
         for (int i = 0; i < check1[idx2].size(); ++i) {
             if (check1[idx2][i] == idx1) {
-                idx1 = -1; //¶È°°Àº »ç¶÷ÀÌ ¶È°°Àº »ç¶÷À» ½Å°í ÇßÀ¸¸é index´Â ¾ø´Â °ÍÀ¸·Î ÇÑ´Ù.
+                idx1 = -1; //ë˜‘ê°™ì€ ì‚¬ëŒì´ ë˜‘ê°™ì€ ì‚¬ëŒì„ ì‹ ê³  í–ˆìœ¼ë©´ indexëŠ” ì—†ëŠ” ê²ƒìœ¼ë¡œ í•œë‹¤.
             }
         }
         if (idx1 != -1) {
