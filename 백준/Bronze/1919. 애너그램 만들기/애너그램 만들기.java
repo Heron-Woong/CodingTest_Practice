@@ -2,20 +2,21 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    public static int[] getAlphabetCount(String str) {
+        int[] count = new int[26];
+        for (int i = 0; i < str.length(); i++) {
+            count[str.charAt(i) - 'a']++;
+        }
+        return count;
+    }
+    
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         String str1 = sc.next();
         String str2 = sc.next();
-        
-        int countA[] = new int[26];
-        int countB[] = new int[26];
-        for (int i = 0; i < str1.length(); i++) {
-            countA[str1.charAt(i) - 'a']++;
-        }
 
-        for (int i = 0; i < str2.length(); i++) {
-            countB[str2.charAt(i) - 'a']++;
-        }
+        int countA[] = getAlphabetCount(str1);
+        int countB[] = getAlphabetCount(str2);
 
         int ans = 0;
         for (int i = 0; i < 26; ++i) {
@@ -25,7 +26,7 @@ public class Main {
                 ans += countB[i] - countA[i];
             }
         }
-        
+
         System.out.println(ans);
     }
 }
