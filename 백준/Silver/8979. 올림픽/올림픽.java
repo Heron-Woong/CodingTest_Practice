@@ -14,8 +14,9 @@ public class Main {
 
         public int compareTo(Rank r) {
             if(this.g != r.g) return r.g - this.g;
-            if(this.g == r.g) return r.s - this.s;
-            return r.d - this.d;
+            if(this.g == r.g && this.s != r.s) return r.s - this.s;
+            if(this.s == r.s) return r.d - this.d;
+            return 0;
         }
     }
 
@@ -35,14 +36,17 @@ public class Main {
         }
         Collections.sort(ranks);
         ranks.get(0).rank = 1;
+        int count = 1;
         for(int i = 1; i < ranks.size() ; ++i) {
             if(ranks.get(i-1).g == ranks.get(i).g &&
                     ranks.get(i-1).s == ranks.get(i).s &&
                     ranks.get(i-1).d == ranks.get(i).d) {
                 ranks.get(i).rank = ranks.get(i-1).rank;
+                ++count;
             }
             else {
-                ranks.get(i).rank = ranks.get(i-1).rank + 1;
+                ranks.get(i).rank = ranks.get(i-1).rank + count;
+                count = 1;
             }
         }
         int answer = 0;
