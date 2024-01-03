@@ -9,14 +9,14 @@ public class Main {
         for (int i = 0; i < n; i++) {
             nums[Integer.parseInt(buf.readLine())]++;
         }
-        StringBuilder sb = new StringBuilder();
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         for (int i = 1; i < 10001; i++) {
             if(nums[i] != 0) {
                 for (int j = 0; j < nums[i]; j++) {
-                    sb.append(i + "\n");
+                    bw.write(i + "\n");
                 }
             }
         }
-        System.out.println(sb);
+        bw.flush();
     }
 }
