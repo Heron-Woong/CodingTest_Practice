@@ -12,9 +12,8 @@ public class Main {
             st = new StringTokenizer(buf.readLine());
             arr[i] = Integer.parseInt(st.nextToken());
         }
-        Arrays.sort(arr);
         long s = 1;
-        long e = arr[n-1];
+        long e = Integer.MAX_VALUE;
         long result = 0;
         while(s <= e){
             long m = (s + e) / 2;
@@ -36,5 +35,4 @@ public class Main {
         }
         return count;
     }
-
 }
